@@ -48,33 +48,33 @@ while True:
         prediction = np.argmax(model.predict(frame_proccessed), axis=1)
         print(prediction)
         
-        if prediction == 0:
-            print("classroom")
-            count_classroom = count_classroom+1
-        elif prediction == 1:
-            print("corridor")
-            count_corridor = count_corridor+1
-        elif prediction == 2:
-            print("labelka")
-            count_labelka = count_labelka+1
-        elif prediction == 3:
-            print("labpower")
-            count_labpower = count_labpower+1
+        if prediction == room:
+            if prediction == 0:
+                print("classroom")
+                count_classroom = count_classroom+1
+                if count_classroom == 25:
+                    print("this is a classroom")
+                    break
+            if prediction == 1:
+                print("corridor")
+                count_corridor = count_corridor+1
+                if count_corridor == 25:
+                    print("this is a corridor")
+                    break
+            if prediction == 2:
+                print("labelka")
+                count_labelka = count_labelka+1
+                if count_labelka == 25:
+                    print("this is labelka")
+                    break
+            if prediction == 3:
+                print("labpower")
+                count_labpower = count_labpower+1
+                if count_labpower == 25:
+                    print("this is labpower")
+                    break
         else:
             print("Invalid")
-
-        if count_classroom == 20:
-            print("this is a classroom")
-            break
-        elif count_corridor == 20:
-            print("this is a corridor")
-            break
-        elif count_labelka == 20:
-            print("this is labelka")
-            break
-        elif count_labpower == 20:
-            print("this is labpower")
-            break
 
         cv2.imshow('Prediction', color_img_resize)
         key = cv2.waitKey(1)
